@@ -37,7 +37,7 @@ class UserPostActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         setContentView(R.layout.activity_user_post)
 
         val actionBar = supportActionBar
-        actionBar!!.title = "Coments User"
+        actionBar!!.title = "Posts User"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         idUser = intent.getIntExtra("ID",0)
@@ -64,6 +64,8 @@ class UserPostActivity : AppCompatActivity(), CoroutineScope by MainScope() {
                 }else{
                     progressBar.visibility = View.INVISIBLE
                     Log.v("APIDATA", "No se encontro usuarios")
+                    Toast.makeText(this@UserPostActivity,"Este Usuario no posee publicaciones",Toast.LENGTH_SHORT).show()
+                    onBackPressed()
                 }
             }catch (e: Exception){
                 progressBar.visibility = View.INVISIBLE
